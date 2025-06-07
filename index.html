@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       font-family: 'Inter', sans-serif;
       margin: 0;
@@ -65,6 +68,17 @@
     .skills, .projects, .contact {
       margin-top: 1rem;
     }
+    .projects h3 {
+      margin-bottom: 0.2rem;
+    }
+    .projects a {
+      text-decoration: none;
+      color: #007acc;
+      font-weight: bold;
+    }
+    .projects a:hover {
+      text-decoration: underline;
+    }
     footer {
       background: #0a192f;
       color: white;
@@ -77,6 +91,21 @@
     a:hover {
       text-decoration: underline;
     }
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      section {
+        padding: 2rem;
+      }
+      nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -88,15 +117,15 @@
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="assets/Amisha_Gupta.pdf" class="btn" target="_blank">Resume</a></li>
+    <li><a href="assets/Amisha_Gupta.pdf" class="btn" target="_blank"><i class="fas fa-file-download"></i> Resume</a></li>
   </ul>
 </nav>
 
 <section id="about">
   <h2>About Me</h2>
-  <p>Final Year B.Tech Student | Aspiring Software Developer | Lifelong Learner</p>
-  <p>Based in India | Open to internships and collaborations</p>
-  <p>Email: <a href="mailto:amishagupta2704@gmail.com">amishagupta2704@gmail.com</a></p>
+  <p>🎓 3rd Year B.Tech Student | 👩‍💻 Aspiring Software Developer | 🌱 Lifelong Learner</p>
+  <p>🤝 Open to internships and collaborations</p>
+  <p>📧 <a href="mailto:amishagupta2704@gmail.com">amishagupta2704@gmail.com</a></p>
 </section>
 
 <section id="skills">
@@ -110,29 +139,39 @@
 
 <section id="projects">
   <h2>Projects</h2>
-  <div class="projects">
-    <h3>Hostel Buddy</h3>
-    <p><em>Smart accommodation platform for hostel booking and management<br/>Tech: MERN Stack</em></p>
+<div class="projects">
+  <h3>
+    <a href="https://github.com/Amisha2700/hostelbuddie" target="_blank">🏠 HostelBuddie </a>
+  </h3>
+  <ul>
+    <li>Built a full-stack web portal to improve communication and resource sharing among hostel students.</li>
+    <li>Implemented roommate matching using Cosine Similarity.</li>
+    <li>Created a Lost-and-Found portal and a student marketplace for academic exchanges.</li>
+  </ul>
 
-    <h3>EntreConnect</h3>
-    <p><em>Connects budding entrepreneurs with mentors and investors<br/>Includes real-time chatbot, backend AI integrations</em></p>
-  </div>
+  <h3>
+    <a href="https://github.com/Amisha2700/EntreConnect" target="_blank">🤝 EntreConnect </a>
+  </h3>
+  <ul>
+    <li>Developed a platform connecting entrepreneurs with peers, mentors, and investors based on shared domains, goals, and interests.</li>
+    <li>Enabled investors to discover promising startups and entrepreneurs to seek funding and relevant collaborations.</li>
+    <li>Integrated an NLP-powered conversational <strong>chatbot</strong> for startup guidance using the Gemini API.</li>
+  </ul>
+</div>
 </section>
 
 <section id="contact">
   <h2>Contact Me</h2>
   <ul class="contact">
-    <li>Email: <a href="mailto:amishagupta2704@gmail.com">amishagupta2704@gmail.com</a></li>
-    <li>GitHub: <a href="https://github.com/Amisha2700" target="_blank">Amisha2700</a></li>
-    <li>LinkedIn: <a href="https://www.linkedin.com/in/amisha-gupta-567566291/" target="_blank">Amisha Gupta</a></li>
+    <li><i class="fas fa-envelope"></i> <a href="mailto:amishagupta2704@gmail.com">amishagupta2704@gmail.com</a></li>
+    <li><i class="fab fa-github"></i> <a href="https://github.com/Amisha2700" target="_blank">GitHub</a></li>
+    <li><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/amisha-gupta-567566291/" target="_blank">LinkedIn</a></li>
   </ul>
 </section>
-
+<!-- 
 <footer>
-  Made with 💙 by Amisha Gupta | Hosted on GitHub Pages
-</footer>
+  Made by Amisha Gupta | Hosted on GitHub Pages
+</footer> -->
 
 </body>
 </html>
-
-
