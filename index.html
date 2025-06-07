@@ -7,19 +7,35 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    html {
+    :root {
+      --bg: #0a192f;
+      --text: #e6f1ff;
+      --accent: #64ffda;
+      --accent-hover: #52d1b4;
+      --card: rgba(255, 255, 255, 0.03);
+    }
+    [data-theme="light"] {
+      --bg: #f9fbfd;
+      --text: #0a192f;
+      --accent: #00796b;
+      --accent-hover: #009688;
+      --card: rgba(0, 0, 0, 0.03);
+    }
+
+    * {
       scroll-behavior: smooth;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
     body {
       font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f8f9fa;
-      color: #1f1f1f;
+      background: var(--bg);
+      color: var(--text);
     }
     nav {
-      background: #0a192f;
-      color: #ffffff;
+      background: var(--bg);
+      color: var(--text);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -27,6 +43,7 @@
       position: sticky;
       top: 0;
       z-index: 10;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     }
     nav h1 {
       font-size: 1.5rem;
@@ -35,61 +52,83 @@
       list-style: none;
       display: flex;
       gap: 1.5rem;
-      margin: 0;
     }
     nav ul li a {
-      color: #ffffff;
+      color: var(--text);
       text-decoration: none;
       font-weight: 600;
     }
     nav ul li a:hover {
-      color: #64ffda;
+      color: var(--accent);
     }
     section {
-      padding: 3rem 6rem;
+      padding: 4rem 6rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+      background-color: var(--card);
+      border-radius: 12px;
+      margin: 2rem auto;
+      max-width: 960px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     h2 {
-      color: #0a192f;
-      border-bottom: 3px solid #64ffda;
+      color: var(--accent);
+      border-bottom: 3px solid var(--accent);
       display: inline-block;
       margin-bottom: 1rem;
     }
     .btn {
-      background: #64ffda;
-      color: #0a192f;
+      background: var(--accent);
+      color: var(--bg);
       padding: 0.6rem 1.2rem;
       border-radius: 6px;
       font-weight: 600;
       text-decoration: none;
     }
     .btn:hover {
-      background: #52d1b4;
+      background: var(--accent-hover);
     }
-    .skills, .projects, .contact {
-      margin-top: 1rem;
-    }
-    .projects h3 {
-      margin-bottom: 0.2rem;
-    }
-    .projects a {
-      text-decoration: none;
-      color: #007acc;
-      font-weight: bold;
-    }
-    .projects a:hover {
-      text-decoration: underline;
+    ul.skills, ul.contact {
+      list-style-type: disc;
+      padding-left: 1.2rem;
     }
     footer {
-      background: #0a192f;
-      color: white;
+      background: var(--bg);
+      color: #8892b0;
       text-align: center;
-      padding: 1rem;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+      border-top: 1px solid #112240;
     }
     a {
-      color: #007acc;
+      color: var(--accent);
     }
     a:hover {
       text-decoration: underline;
+      color: var(--accent-hover);
+    }
+    .projects h3 {
+      margin-top: 1rem;
+      color: var(--text);
+    }
+    .toggle-theme {
+      cursor: pointer;
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+    }
+    .toggle-theme:hover {
+      background: var(--accent);
+      color: var(--bg);
     }
     @media (max-width: 768px) {
       nav {
@@ -117,171 +156,8 @@
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="assets/Amisha_Gupta.pdf" class="btn" target="_blank"><i class="fas fa-file-download"></i> Resume</a></li>
-  </ul>
-</nav>
-
-<section id="about">
-  <h2>About Me</h2>
-  <p>🎓 3rd Year B.Tech Student | 👩‍💻 Aspiring Software Developer | 🌱 Lifelong Learner</p>
-  <p>🤝 Open to internships and collaborations</p>
-  <p>📧 <a href="mailto:amishagupta2704@gmail.com">amishagupta2704@gmail.com</a></p>
-</section>
-
-<section id="skills">
-  <h2>Skills</h2>
-  <ul class="skills">
-    <li><strong>Languages:</strong> Python, C++, JavaScript</li>
-    <li><strong>Tech Stack:</strong> Node.js, Express, MongoDB, React</li>
-    <li><strong>Tools:</strong> Git, VS Code, Postman, Figma</li>
-  </ul>
-</section>
-
-<section id="projects">
-  <h2>Projects</h2>
-<div class="projects">
-  <h3>
-    <a href="https://github.com/Amisha2700/hostelbuddie" target="_blank">🏠 HostelBuddie </a>
-  </h3>
-  <ul>
-    <li>Built a full-stack web portal to improve communication and resource sharing among hostel students.</li>
-    <li>Implemented roommate matching using Cosine Similarity.</li>
-    <li>Created a Lost-and-Found portal and a student marketplace for academic exchanges.</li>
-  </ul>
-
-  <h3>
-    <a href="https://github.com/Amisha2700/EntreConnect" target="_blank">🤝 EntreConnect </a>
-  </h3>
-  <ul>
-    <li>Developed a platform connecting entrepreneurs with peers, mentors, and investors based on shared domains, goals, and interests.</li>
-    <li>Enabled investors to discover promising startups and entrepreneurs to seek funding and relevant collaborations.</li>
-    <li>Integrated an NLP-powered conversational <strong>chatbot</strong> for startup guidance using the Gemini API.</li>
-  </ul>
-</div>
-</section>
-
-<section id="contact">
-  <h2>Contact Me</h2>
-  <ul class="contact">
-    <li><i class="fas fa-envelope"></i> <a href="mailto:amishagupta2704@gmail.com">amishagupta2704@gmail.com</a></li>
-    <li><i class="fab fa-github"></i> <a href="https://github.com/Amisha2700" target="_blank">GitHub</a></li>
-    <li><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/amisha-gupta-567566291/" target="_blank">LinkedIn</a></li>
-  </ul>
-</section>
-<!-- 
-<footer>
-  Made by Amisha Gupta | Hosted on GitHub Pages
-</footer> -->
-
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amisha Gupta | Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      scroll-behavior: smooth;
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #f8f9fa;
-      color: #1f1f1f;
-    }
-    nav {
-      background: #0a192f;
-      color: #ffffff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    nav h1 {
-      font-size: 1.5rem;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
-    nav ul li a {
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    nav ul li a:hover {
-      color: #64ffda;
-    }
-    section {
-      padding: 4rem 6rem;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease-out;
-    }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    h2 {
-      color: #0a192f;
-      border-bottom: 3px solid #64ffda;
-      display: inline-block;
-      margin-bottom: 1rem;
-    }
-    .btn {
-      background: #64ffda;
-      color: #0a192f;
-      padding: 0.6rem 1.2rem;
-      border-radius: 6px;
-      font-weight: 600;
-      text-decoration: none;
-    }
-    .btn:hover {
-      background: #52d1b4;
-    }
-    ul.skills, ul.contact {
-      list-style-type: disc;
-      padding-left: 1.2rem;
-    }
-    footer {
-      background: #0a192f;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-    }
-    a {
-      color: #007acc;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .projects h3 {
-      margin-top: 1rem;
-      color: #0a192f;
-    }
-  </style>
-</head>
-<body>
-
-<nav>
-  <h1>Amisha Gupta</h1>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
     <li><a href="assets/Amisha_Gupta.pdf" class="btn" target="_blank">Resume</a></li>
+    <li><button class="toggle-theme" onclick="toggleTheme()">Toggle Theme</button></li>
   </ul>
 </nav>
 
@@ -295,35 +171,34 @@
 <section id="skills">
   <h2>Skills</h2>
   <ul class="skills">
-    <li><strong>Languages:</strong> Python, C/C++, HTML/CSS, React/Vite, Node.js, Express.js, Javascript</li>
+    <li><strong>Languages:</strong> Python, C/C++, HTML/CSS, React/Vite, Node.js, Express.js, JavaScript</li>
     <li><strong>Tech Stack:</strong> Node.js, Express, MongoDB, React</li>
-    <li><strong>Tools:</strong> Git, VS Code, Postman, Figma, VS Code, PyCharm, Cloudinary, Firebase</li>
+    <li><strong>Tools:</strong> Git, VS Code, Postman, Figma, PyCharm, Cloudinary, Firebase</li>
   </ul>
 </section>
 
 <section id="projects">
   <h2>Projects</h2>
-<div class="projects">
-  <h3>
-    <a href="https://github.com/Amisha2700/hostelbuddie" target="_blank">🏠 HostelBuddie </a>
-  </h3>
-  <ul>
-    <li>Built a full-stack web portal to improve communication and resource sharing among hostel students.</li>
-    <li>Implemented roommate matching using Cosine Similarity.</li>
-    <li>Created a Lost-and-Found portal and a student marketplace for academic exchanges.</li>
-  </ul>
+  <div class="projects">
+    <h3>
+      <a href="https://github.com/Amisha2700/hostelbuddie" target="_blank">🏠 HostelBuddie </a>
+    </h3>
+    <ul>
+      <li>Built a full-stack web portal to improve communication and resource sharing among hostel students.</li>
+      <li>Implemented roommate matching using Cosine Similarity.</li>
+      <li>Created a Lost-and-Found portal and a student marketplace for academic exchanges.</li>
+    </ul>
 
-  <h3>
-    <a href="https://github.com/Amisha2700/EntreConnect" target="_blank">🤝 EntreConnect </a>
-  </h3>
-  <ul>
-    <li>Developed a platform connecting entrepreneurs with peers, mentors, and investors based on shared domains, goals, and interests.</li>
-    <li>Enabled investors to discover promising startups and entrepreneurs to seek funding and relevant collaborations.</li>
-    <li>Integrated an NLP-powered conversational <strong>chatbot</strong> for startup guidance using the Gemini API.</li>
-  </ul>
-</div>
+    <h3>
+      <a href="https://github.com/Amisha2700/EntreConnect" target="_blank">🤝 EntreConnect </a>
+    </h3>
+    <ul>
+      <li>Developed a platform connecting entrepreneurs with peers, mentors, and investors based on shared domains, goals, and interests.</li>
+      <li>Enabled investors to discover promising startups and entrepreneurs to seek funding and relevant collaborations.</li>
+      <li>Integrated an NLP-powered conversational <strong>chatbot</strong> for startup guidance using the Gemini API.</li>
+    </ul>
+  </div>
 </section>
-
 
 <section id="contact">
   <h2>Contact Me</h2>
@@ -340,19 +215,28 @@
 
 <script>
   const sections = document.querySelectorAll('section');
-  const observer = new IntersectionObserver(entries => {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.2 });
+  }, { threshold: 0.3 });
 
   sections.forEach(section => {
     observer.observe(section);
   });
+
+  function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    if (currentTheme === "light") {
+      document.documentElement.removeAttribute("data-theme");
+    } else {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+  }
 </script>
 
 </body>
 </html>
-
