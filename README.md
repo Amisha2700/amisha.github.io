@@ -4,7 +4,6 @@ Welcome to my personal portfolio website built using GitHub Pages and the [jekyl
 
 🔗 **Live Site**: [https://amisha.github.io](https://amisha.github.io)
 
-> 💡 Replace `yourusername` with your GitHub username in the above URL once you deploy.
 
 ---
 
