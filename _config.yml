@@ -1,0 +1,28 @@
+# title: Amisha Gupta
+# show_downloads: true
+# theme: jkyll-theme-minimal
+title: "Amisha Gupta"
+description: "Aspiring Software Developer | Passionate Learner | Open to Opportunities"
+url: "https://yourusername.github.io"  # Replace with your GitHub Pages URL
+baseurl: ""  # Leave empty unless your site is in a subdirectory
+
+theme: jekyll-theme-minimal
+
+# Optional, useful for SEO and navigation
+author:
+  name: "Amisha Gupta"
+  email: "amishagupta2704@gmail.com"
+  github: "Amisha"
+  linkedin: "your-linkedin"
+  resume: "/assets/resume.pdf"  # Update this path if you upload your resume
+
+# Show download link for resume or CV
+show_downloads: true
+
+social_links:
+  github: https://github.com/Amisha2700
+  linkedin: https://www.linkedin.com/in/amisha-gupta-567566291/
+  email: mailto:amishagupta2704@gmail.com
+
+# Custom options
+# logo: "/assets/images/profile.jpg"  # Optional profile image
