@@ -2,7 +2,7 @@
 
 Welcome to my personal portfolio website built using GitHub Pages and the [jekyll-theme-minimal](https://github.com/pages-themes/minimal) theme.
 
-🔗 **Live Site**: [https://amisha.github.io](https://amisha.github.io)
+🔗 **Live Site**: [https://amisha.github.io]([https://amisha.github.io](https://amisha2700.github.io/amisha.github.io/))
 
 ---
 
