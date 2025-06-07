@@ -52,6 +52,7 @@
       list-style: none;
       display: flex;
       gap: 1.5rem;
+      align-items: center;
     }
     nav ul li a {
       color: var(--text);
@@ -112,16 +113,12 @@
     .toggle-theme {
       cursor: pointer;
       background: transparent;
-      border: 2px solid var(--accent);
+      border: none;
       color: var(--accent);
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      transition: all 0.3s;
+      font-size: 1.2rem;
     }
     .toggle-theme:hover {
-      background: var(--accent);
-      color: var(--bg);
+      color: var(--accent-hover);
     }
     @media (max-width: 768px) {
       nav {
@@ -156,7 +153,7 @@
 
 <section id="about">
   <h2>About Me</h2>
-  <p>3rd Year B.Tech Student | Aspiring Software Developer | Lifelong Learner</p>
+  <p>Final Year B.Tech Student | Aspiring Software Developer | Lifelong Learner</p>
   <p>Based in India | Open to internships and collaborations</p>
   <p>Email: <a href="mailto:amishagupta2704@gmail.com">amishagupta2704@gmail.com</a></p>
 </section>
@@ -208,11 +205,16 @@
 
 <script>
   function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute("data-theme");
-    if (currentTheme === "light") {
-      document.documentElement.removeAttribute("data-theme");
+    const root = document.documentElement;
+    const icon = document.querySelector('.toggle-theme i');
+    if (root.getAttribute("data-theme") === "light") {
+      root.removeAttribute("data-theme");
+      icon.classList.remove("fa-sun");
+      icon.classList.add("fa-moon");
     } else {
-      document.documentElement.setAttribute("data-theme", "light");
+      root.setAttribute("data-theme", "light");
+      icon.classList.remove("fa-moon");
+      icon.classList.add("fa-sun");
     }
   }
 </script>
