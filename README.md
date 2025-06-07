@@ -27,14 +27,3 @@ This is a lightweight personal website to showcase:
 
 ---
 
-## 📂 Folder Structure
-
-```bash
-.
-├── _config.yml       # Site configuration
-├── index.md          # Home page content
-├── assets/           # Images, resume, etc.
-│   ├── resume.pdf
-│   └── images/
-│       └── profile.jpg
-├── README.md         # This file
