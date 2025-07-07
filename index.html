@@ -1325,6 +1325,74 @@
         height: 70px;
       }
     }
+
+    /* Mobile nav menu styles */
+    .nav-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 2rem;
+      cursor: pointer;
+      position: absolute;
+      right: 1.2rem;
+      top: 1.1rem;
+      z-index: 1002;
+    }
+
+    .nav-dropdown {
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 70vw;
+      max-width: 320px;
+      height: 100vh;
+      background: var(--glass);
+      box-shadow: -4px 0 24px rgba(10,25,47,0.18);
+      z-index: 1001;
+      padding: 2.5rem 1.2rem 1.2rem 1.2rem;
+      border-radius: 0 0 0 32px;
+      animation: slideInNav 0.3s ease;
+    }
+    .nav-dropdown a, .nav-dropdown .btn, .nav-dropdown button.toggle-theme {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.7rem 0;
+      background: none;
+      border: none;
+      text-align: left;
+      display: block;
+    }
+    .nav-dropdown .btn {
+      display: inline-block;
+      margin: 0.7rem 0;
+    }
+    @keyframes slideInNav {
+      from { right: -100vw; opacity: 0; }
+      to { right: 0; opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        position: relative;
+      }
+      .nav-menu-btn {
+        display: block;
+      }
+      .nav-links {
+        display: none !important;
+      }
+      .nav-dropdown {
+        display: flex;
+      }
+      .nav-dropdown.hide {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1349,14 +1417,25 @@
 
 <nav>
   <h1>Amisha Gupta</h1>
-  <ul>
+  <button class="nav-menu-btn" aria-label="Open menu" onclick="toggleNavMenu()">
+    <i class="fas fa-ellipsis-v"></i>
+  </button>
+  <ul class="nav-links">
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#achievements">Achievements</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="assets/Amisha_Gupta_Resume.pdf" class="btn" target="_blank">Resume</a></li>
-        <li><button class="toggle-theme" onclick="toggleTheme()" style="background: none; border: none; color: var(--accent); font-size: 1.2rem; cursor: pointer; padding: 0.5rem; border-radius: 6px; transition: all 0.3s ease;"><i class="fas fa-moon"></i></button></li>
+    <li><button class="toggle-theme" onclick="toggleTheme()" style="background: none; border: none; color: var(--accent); font-size: 1.2rem; cursor: pointer; padding: 0.5rem; border-radius: 6px; transition: all 0.3s ease;"><i class="fas fa-moon"></i></button></li>
   </ul>
+  <div class="nav-dropdown" id="navDropdown">
+    <a href="#skills" onclick="closeNavMenu()">Skills</a>
+    <a href="#projects" onclick="closeNavMenu()">Projects</a>
+    <a href="#achievements" onclick="closeNavMenu()">Achievements</a>
+    <a href="#contact" onclick="closeNavMenu()">Contact</a>
+    <a href="assets/Amisha_Gupta_Resume.pdf" class="btn btn-small" target="_blank" onclick="closeNavMenu()">Resume</a>
+    <button class="toggle-theme" onclick="toggleTheme(); closeNavMenu()" style="background: none; border: none; color: var(--accent); font-size: 1.2rem; cursor: pointer; padding: 0.5rem; border-radius: 6px; transition: all 0.3s ease;"><i class="fas fa-moon"></i></button>
+  </div>
 </nav>
 
 <!-- Hero Section -->
@@ -1475,7 +1554,7 @@
     <div class="project-item project-left">
     <div class="project-card">
         <div class="project-image">
-          <img src="assets/HostelBuddie.png" alt="HostelBuddie Project" loading="lazy">
+          <img src="assets/Hostelbuddie.png" alt="HostelBuddie Project" loading="lazy">
           <div class="project-overlay">
             <div class="project-links">
               <a href="https://github.com/mihira4/hostelbuddie" target="_blank" class="project-link">
@@ -1716,6 +1795,27 @@
     document.querySelectorAll('section').forEach(section => {
       sectionObserver.observe(section);
     });
+  });
+
+  function toggleNavMenu() {
+    const dropdown = document.getElementById('navDropdown');
+    if (dropdown.style.display === 'flex') {
+      dropdown.style.display = 'none';
+    } else {
+      dropdown.style.display = 'flex';
+    }
+  }
+  function closeNavMenu() {
+    const dropdown = document.getElementById('navDropdown');
+    dropdown.style.display = 'none';
+  }
+  // Optional: Close menu when clicking outside
+  window.addEventListener('click', function(e) {
+    const dropdown = document.getElementById('navDropdown');
+    const btn = document.querySelector('.nav-menu-btn');
+    if (!dropdown.contains(e.target) && !btn.contains(e.target)) {
+      dropdown.style.display = 'none';
+    }
   });
 </script>
 
